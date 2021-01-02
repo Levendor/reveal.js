@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/serif.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
@@ -16,8 +16,261 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<section style="height: 100%">
+					<div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+						<p><h2>Introducing to</h2><h1>MongoDB</h1></p>
+						<p style="font-size: 70%">Created by <a href="https://github.com/Levendor"><strong>Levendor</strong></a> for <a href="https://rs.school/js/"><strong>Rolling Scopes School</strong></a></p>
+					</div>
+					<aside class="notes">
+						<p>Welcome to MongoDB introducing presentation. Today i will give you a basic information of MongoDB database, its definitions, short history, architecture and features. Lets start from brief MongoBD story.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>History</h2>
+					<section>
+						<br>
+						<ul>
+							<li>2007 - the beginning of development</li>
+							<li>2009 - MongoDB 1.0 was released</li>
+							<br>
+							<li>core engine was written in C++</li>
+							<li>founders:
+								<ul>
+									<li>Dwight Merryman</li>
+									<li>Elliot Horowitz</li>
+									<li>and Kevin Ryan</li>
+								</ul>
+							</li>
+						</ul>
+						<aside class="notes">
+							<p>The history of MongoDB started in 2007 from a company called 10gen. 10gen began developing MongoDB as a component of a planned platform as a service product.</p>
+							<p>Development on the new database was carried out from 2007 to 2009. The core engine was written in C++. The database was named MongoDB, since the idea was to use it to store and serve humongous amount of data, required in typical use cases, such as content serving.</p>
+							<p>The developer team decided to focus just on the MongoDB database, instead of the initial service product. The business idea was to release the database as an open source free download, and offer commercial support and training services.</p>
+							<p>MongoDB version 1 was released in February 2009.</p>
+						</aside>
+					</section>
+
+					<section>
+						<img src="./dist/assets/mongodb-timeline1.jpg" alt="architecture">
+						<aside class="notes">
+							<p>At this slide you can see the major milestones of MongoDB evolution.</p>
+							<p>Realising the true business potential, 10gen was renamed as MongoDB Inc. in 2013 to focus on the database product.</p>
+							<p>One of the major problems with early MongoDB was its relatively weak storage engine, used for saving and managing the data on the disk. The company's first acquisition was WiredTiger, a project behind the super stable storage engine with the same name.</p>
+						</aside>
+					</section>
+
+					<section>
+						<img src="./dist/assets/mongodb-timeline2.jpg" alt="architecture">
+						<aside class="notes">
+							<p>Next major release of MongoDB was version 3 at March 2015, which featured the new WiredTiger storage engine.</p>
+							<p>In 2018, the company went for its second acquisition by taking over mLab for 68 million dollars. At the time mLab was providing MongoDB as a service on the cloud, and had a large number of customers. Cloud was the future, and MongoDB Inc. moved quickly to acquire and integrate mLab as part of the MongoDB Atlas cloud platform.</p>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Definitions</h2>
+					<section>
+						<p><strong>MongoDB</strong> is a cross-platform, document oriented NoSQL database</p>
+						<aside class="notes">
+							<p>MongoDB is a document based NoSQL database. It can run on all major platforms (Windows, Linux and Macintosh). The open source version is available as a free download. MongoDB stores data entities in a container, called collection, and each piece of data is stored in a JSON document format.</p>
+							<p>MongoDB also comes with a console client called MongoDB shell. This is a JavaScript environment using which you can add, remove, edit or query document data in the database</p>.
+						</aside>
+					</section>
+
+					<section>
+						<p>A <strong>NoSQL</strong> database ("non-SQL", "non-relational" or "not only SQL") has a mechanism for storage and retrieval of data other than used in relational databases.</p>
+						<aside class="notes">
+							<p>A NoSQL database (originally referring to "non-SQL" or "non-relational") provides a mechanism for storage and retrieval of data, that is modeled in means, other than the tabular relations used in relational databases.</p>
+							<p>The data structures used by NoSQL databases (such as key–value pair, wide column, graph, or document) are different from those, used by default in relational databases, making some operations faster in NoSQL.</p>
+						</aside>
+					</section>
+
+					<section>
+						<p>A <strong>document-oriented database</strong> is a data storage system designed for storing, retrieving and managing document-oriented information.</p>
+						<aside class="notes">
+							<p>A document-oriented database is a specialized key-value store, which is another NoSQL database category. In a simple key-value store, the document content is not transparent. A document-oriented database provides APIs, that exposes the ability to query or update, based on the internal structure in the document.</p>
+							<p>A key difference between the document-oriented and relational models, is that the data formats are not predefined in the document case.</p>
+							<p>Relational databases generally store data in separate tables, that are defined by the programmer, and a single object may be spread across several tables.</p>
+							<p>Document databases store all information for a given object in a single instance in the database, and every stored object can be different from every other.</p>
+						</aside>
+					</section>
+
+					<section>
+						<p>MongoDB uses <strong>BSON</strong> format for data storage and transfer.</p>
+						<p>BSON is the binary JSON.</p><br>
+						<p><ul>
+							<li>Lightweight</li>
+							<li>Traversable</li>
+							<li>Efficient</li>
+						</ul></p>
+						<aside class="notes">
+							<p>BSON, short for Bin­ary JSON, is a bin­ary-en­coded serialization of JSON-like documents.</p>
+							<p>BSON is designed to be efficient in space, but in some cases uses even more space than JSON. The reason for this is another of the BSON design goals: traversability. BSON adds some "extra" information to documents, like length of strings and sub-objects. This makes traversal faster.</p>
+							<p>BSON is also designed to be fast to encode and decode. For example, integers are stored in integer data format, so they don't need to be parsed to and from text. This uses more space than JSON for small values, but is much faster to parse.</p>
+							<p>In addition to compactness, BSON adds additional data types, unavailable in JSON, notably the BinData and Date data types.</p>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>MongoDB architecture</h2>
+						<aside class="notes">
+							<p>The following MongoDB architecture diagram provides the major components in the MongoDB server.</p>
+						</aside>
+					</section>
+
+					<section style="height: 100%;">
+						<img src="./dist/assets/mongodb-architecture.jpg" alt="architecture">
+						<aside class="notes">
+							<p>MongoDB currently offers drivers for 13 languages including Java, Node.JS, Python, PHP and Swift.</p>
+							<p>MongoDB ships with three supported storage engines, all of which can coexist within a single MongoDB replica set:</p>
+								<ul>
+									<li>The default WiredTiger storage engine</li>
+									<li>The Encrypted storage engine, protecting highly sensitive data. (Requires MongoDB Enterprise Advanced)</li>
+									<li>The In-Memory storage engine, delivering the extreme performance and real time analytics for the most demanding, latency-sensitive applications. (This is also requires enterprise version)</li>
+									<li>The MMAP version 1 engine, that was used only before 4.2 release.</li>
+								</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Features</h2>
+					<section>
+						<img src="./dist/assets/Features.jpg" alt="features">
+						<aside class="notes">
+							<P>Now lets talking about MongoDB features.</P>
+							<ul>
+								<li><strong>Aggregation:</strong> A MongoDB server contains databases, each of which is a physical container for collections. Each collection is a group of documents. Now, a document is a set of key-value pairs that has a dynamic schema. That means all documents in one collection might not have the same structure, and the common fields in documents might contain different data types.</li>
+								<li><strong>Document-oriented:</strong> The document structure is more similar with that, how developers create their classes and objects in their programming languages. Developers often say, that the classes are not in rows and columns, but have a structure as key-value pairs.</li>
+								<li><strong>Schema-less Database:</strong> In NoSQL databases, the documents don’t need to have a schema, that is defined beforehand. The MongoDB data modelling allows you to represent hierarchical relationships, to store arrays and other complex structures.</li>
+								<li><strong>Grid File System:</strong> For storing and retrieving large files GridFS is used in Mongo. GridFS is a file system that only stores the files, and their data is stored within MongoDB collections. GridFS can store files, greater than its document size, within the limit of 16 MB.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>MapReduce</h3>
+						<img src="./dist/assets/mapreduce.jpg" alt="mapreduce">
+						<aside class="notes">
+							<p>Another important feature is that it supports MapReduce and aggregation tools.</p>
+							<p>The "map" operation can write results to a collection. If you perform the subsequent "reduce" operation on the same input collection, then it merges, or replaces, or reduces the new results with the previous results.</p>
+							<p>MapReduce can be used for aggregation operations. When large datasets process and generate results with the help of parallel and distributed algorithms on clusters, it is called MapReduce.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h3>BSON format</h3>
+						<img src="./dist/assets/json.PNG" alt="bson">
+						<aside class="notes">
+							<p>MongoDB uses BSON while storing documents in collections</p>
+							<p>As a primary key, the BSON format uses "_id" field. As "_id" is used as a primary key, it should have a unique value, associated with it, which is called ObjectId, generated automatically.</p>
+							<p>There are many other advantages of using the BSON format, such as it enables internal index and map document properties. Also, it increases the read/write throughput of MongoDB.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Sharding</h3>
+						<img src="./dist/assets/sharding.jpg" alt="sharding">
+						<aside class="notes">
+							<p>MongoDB provides sharding to overcome scaling problem of web or mobile application. Sharding is a method, in which data is distributed across multiple machines. With the help of sharding, it is able to offer horizontal scalability.</p>
+							<p>Sharding is a complicated process, and is done with the help of several shards. Each shard holds some part of the data as a separate database. Merging all the shards together forms a single logical database. Operations over here are performed by query routers.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Ad-hoc queries</h3>
+						<img src="./dist/assets/adhoc.PNG" alt="adhoc">
+						<aside class="notes">
+							<p>MongoDB supports range query, regular expression and other types of searches. The queries include user-defined JavaScript functions, and they return specific fields from the documents. By indexing BSON documents, it can support ad-hoc queries.</p>
+							<p>At the slide you can see the difference between a SQL query and a MongoDB query, by checking how to fetch all the records from a table for the employee name ‘XYZ’ in both databases.</p>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Indexing</h3>
+						<img src="./dist/assets/indexing.jpg" alt="indexing">
+						<aside class="notes">
+							<p>MongoDB index is used to improve the performance of searches. Any field in a MongoDB document can be indexed as either primary or secondary. This lets the database engine to efficiently resolve the queries.</p>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h3>Not-So-Great Features</h3>
+					<section>
+						<ul>
+							<li>Joins</li>
+							<li>Indexing</li>
+							<li>Duplicates</li>
+						</ul>
+						<aside class="notes">
+							<p>On the other hand, there are still areas where MongoDB doesn’t perform as well as other databases. Here are some of the downsides of MongoDB:</p>
+						<ul>
+							<li>Joins</li>
+							<p>Joining documents in MongoDB is no easy task, and though version 3.2 introduced joins, developers are still working on the function and it’s not quite mature yet. Pulling data from several collections requires a number of queries, which will lead to messy code and long turn-around times.</p>
+							<li>Indexing</li>
+							<p>Quick speeds and high performance is only possible with the right indexes. With badly implemented and out of order composite indexes, MongoDB will operate at a very slow speed.</p>
+							<li>Duplicates</li>
+							<p>Some of these downsides could lead to duplicate data. The relationships in MongoDB are not typically well-defined, and the resulting duplicate data sets can be hard to handle. That, along with not being ACID compliant, would lead to corrupted data.</p>
+						</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h4>MongoDB good for:</h4>
+						<ul>
+							<li>E-commerce product catalog.</li>
+							<li>Blogs and content management.</li>
+							<li>Real-time analytics and high-speed logging and caching.</li>
+							<li>Configuration management.</li>
+							<li>Maintaining geospatial data.</li>
+							<li>Mobile and social networking sites.</li>
+							<li>Evolving data requirements.</li>
+							<li>Loosely coupled objectives — the design may change by over time.</li>
+						</ul>
+						<aside class="notes">
+							<p>It is good to implement MongoDB for:</p>
+							<ul>
+								<li>E-commerce product catalog.</li>
+								<li>Blogs and content management.</li>
+								<li>Real-time analytics and high-speed logging and caching.</li>
+								<li>Configuration management.</li>
+								<li>Maintaining geospatial data.</li>
+								<li>Mobile and social networking sites.</li>
+								<li>Evolving data requirements.</li>
+								<li>Loosely coupled objectives — the design may change by over time.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h4>Not so good for:</h4>
+						<ul>
+							<li>Highly transactional systems or where the data model is designed up front.</li>
+							<li>Tightly coupled systems</li>
+						</ul>
+						<aside class="notes">
+							<p>However, MongoDB is not so good for:</p>
+							<ul>
+								<li>Highly transactional systems or where the data model is designed beforehand.</li>
+								<li>Tightly coupled systems</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section>
+					<h2>Thank you for your attention!</h2>
+					<aside class="notes">
+						Thank you for your attention!
+					</aside>
+				</section>
+
 			</div>
 		</div>
 
@@ -31,7 +284,7 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				slideNumber: 'c/t',
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
