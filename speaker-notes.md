@@ -57,7 +57,7 @@ As a primary key, the BSON format uses "_id" field. As "_id" is used as a primar
 There are many other advantages of using the BSON format, such as it enables internal index and map document properties. Also, it increases the read/write throughput of MongoDB.
 
 MongoDB provides sharding to overcome scaling problem of web or mobile application. Sharding is a method, in which data is distributed across multiple machines. With the help of sharding, it is able to offer horizontal scalability.
-Sharding is a complicated process, and is done with the help of several shards. Each shard holds some part of the data as a separate database. Merging all the shards together forms a single logical database. Operations over here are performed by query routers.
+Sharding is a complicated process, and is done with the help of several shards. Each shard holds some part of the data as a separate database. Merging all the shards together forms a single logical database.
 
 MongoDB supports range query, regular expression and other types of searches. The queries include user-defined JavaScript functions, and they return specific fields from the documents. By indexing BSON documents, it can support ad-hoc queries.
 At the slide you can see the difference between a SQL query and a MongoDB query, by checking how to fetch all the records from a table for the employee name ‘XYZ’ in both databases.

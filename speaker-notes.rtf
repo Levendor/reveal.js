@@ -1,0 +1,81 @@
+{\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl240\slmult1\f0\fs28\lang9 Welcome to MongoDB introducing presentation. Today i will give you a basic information of MongoDB database, its definitions, short history, architecture and features. Lets start from brief MongoBD story.\par
+The history of MongoDB started in 2007 from a company called 10gen. 10gen began developing MongoDB as a part of a planned platform as a service product.\par
+Development on the new database was carried out from 2007 to 2009. The core engine was written in C++. The database was named MongoDB, since the idea was to use it to store and process humongous amount of data, that required in typical use cases like content serving.\par
+
+\pard\ri-784\sl240\slmult1 The developer team decided to focus just on the MongoDB database, instead of the initial service product. The business idea was to release the database as an open source free download, and offer commercial support and training services.\par
+
+\pard\sl240\slmult1 MongoDB version 1 was released in February 2009.\par
+\par
+At this slide you can see the major milestones of MongoDB evolution.\par
+In 2013 10gen realised the true business potential and was renamed as MongoDB Inc. to focus on the database product.\par
+One of the big problems at the beginning of MongoDB was its quite weak storage engine, used for saving and managing the data on the disk. The company's first acquisition was WiredTiger project, which created the super stable storage engine with the same name.\par
+\par
+Next major release of MongoDB was version 3 at March 2015 with the new WiredTiger storage engine.\par
+In 2018 the MongoDB bought mLab company. This company was providing MongoDB as a service on the cloud, and had a large number of customers. With this aquisition MongoDB Inc. could developed its own Atlas cloud platform.\par
+\par
+MongoDB is a document-based NoSQL database. It can run on Windows, Linux and Macintosh operational systems. The open source version is available as a free download.\par
+MongoDB stores data entities in a container, which called collection, and each piece of data is stored in a JSON document format.\par
+MongoDB has its own a console client called MongoDB shell. This is a JavaScript environment allows you to add, remove, edit or query document data.\par
+\par
+NoSQL abbreviation means "non-SQL" or "non-relational". A NoSQL database provides a mechanism for data storage and retrieval, other than used in relational databases.\par
+The data structures used by NoSQL databases are key\f1\endash value pair, wide column, graph and document. They are different from used in relational databases, making some operations faster in NoSQL case.\par
+\par
+A document-oriented database is a specialized key-value store and belongs to NoSQL category.\par
+A key difference between the document-oriented and relational models, is that the data formats are not predefined in the document case.\par
+Relational databases generally store data in separate tables, that are defined by the programmer, and a single object may be spread across several tables.\par
+Document databases store all information for a given object in a single instance in the database, and every stored object can be different from every other.\par
+\par
+BSON abbreviationif a short for binary JSON, a binary form of JSON-like documents.\par
+I will introduce this later in features chapter.\par
+\par
+The MongoDB architecture diagram shows the major components in the MongoDB server, sa following.\par
+\par
+MongoDB supports drivers for 13 languages including Java, Node.JS, Python, PHP and Swift.\par
+MongoDB ships with three supported storage engines, all of which can coexist within a single MongoDB replica set:\par
+\par
+The default WiredTiger storage engine\par
+The Encrypted storage engine that protecting data. (Requires Enterprise version)\par
+The In-Memory storage engine, delivering the increased performance and real time analytics for the most demanding applications, that sensitive to low latency. (This is also requires enterprise version)\par
+The MMAP version 1 engine, that was used only before 4.2 release.\par
+\par
+Now lets talk about MongoDB features.\par
+Aggregation: This operations process data records and return the computed results. It is similar to the GROUPBY operation in SQL. Examples are sum, avg, min, max, etc.\par
+Document-oriented: The document structure is more similar with that, how developers describe objects in programming languages. That means objects are not in rows and columns, but have a structure as key-value pairs.\par
+Schema-less database: In MongoDB the documents don\rquote t need to have a predefined schema. The MongoDB data modelling allows you to represent hierarchical relationships, to store arrays and other complex structures.\par
+Grid File System: For storing and retrieving large files GridFS is used in Mongo. GridFS is a file system that only stores the files, and their data is stored within MongoDB collections. GridFS can store files, greater than its document size, within the limit of 16 MB.\par
+\par
+Another important feature is that it supports MapReduce and aggregation tools.\par
+The "map" operation can write results to a collection. If you perform the subsequent "reduce" operation on the same input collection, then it merges, or replaces, or reduces the new results with the previous results.\par
+MapReduce can also be used for aggregation operations.\par
+\par
+MongoDB uses BSON data format while storing documents in collections.\par
+As a primary key, the BSON uses "underscore id" field by default. This field should have a unique value, which is called ObjectId, that generated either manually or automatically.\par
+In some cases BSON uses more space than JSON. The reason for this is traversability goal of BSON. It is adds "extra" information to documents, like length of strings and sub-objects. This makes traversal faster.\par
+BSON is also designed to be fast to encode and decode. For example, integers are stored in integer format, so they don't need to be parsed to and from text. This uses more space than JSON for small values, but is much faster to parse.\par
+Also BSON supports additional data types, like BinData and Date.\par
+\par
+MongoDB provides sharding to overcome scaling problem of web or mobile application. Sharding is a method, in which data is distributed across multiple machines. Sharding provides horizontal scalability.\par
+Each shard holds some part of the data as a separate database. Merging all the shards together forms a single logical database. Operations over here are performed by query routers.\par
+\par
+MongoDB supports range query, regular expression and other types of searches. The queries include user-defined JavaScript functions, and they return specific fields of a document.\par
+This is an example of the difference between a SQL query and a MongoDB query.\par
+\par
+MongoDB index is used to improve the performance of searches. Any field in a MongoDB document can be indexed as either primary or secondary. This lets the database engine efficiently resolve queries.\par
+\par
+On the other hand, there are still areas where MongoDB doesn\rquote t perform well. Here are some of the downsides of MongoDB:\par
+Joins\par
+Joining documents in MongoDB is no easy task. Pulling data from several collections requires a number of queries, which will lead to messy code and long latency. This feature is in development now.\par
+Indexing\par
+Quick speeds and high performance is only possible with the right indexes. With badly implemented and out of order composite indexes, MongoDB will operate at a very slow speed.\par
+Duplicates\par
+The relationships in MongoDB are not typically well-defined, and this could lead to duplicate data.\par
+\par
+It is good to implement MongoDB for the collections of data that have not tightly coupled entities or data which could change over time. The examples of good implementation at the slide.\par
+\par
+It is not good idea to use MongoDB in highly transaction systems, in systems with predefined model or in thightly coupled systems.\par
+\par
+Thank you for your attention!\f0\par
+}
+ 
